@@ -2,6 +2,7 @@ import { FunctionDefinition, Rag, ArrayRecombiner } from "@/agent-core";
 import { AgentContext } from "@/agent-core";
 import { AgentFunctionBase } from "../../functions/utils";
 import { Agent, GoalRunArgs } from "../utils/Agent";
+import { AdministratorEventLogAgent } from "../AdministratorEventLog";
 import { DeveloperAgent } from "../Developer";
 import { CsvAnalystAgent } from "../CsvAnalyst";
 import { ResearcherAgent } from "../Researcher";
@@ -28,6 +29,7 @@ export const findBestAgent = async (
   AgentFunctionBase<unknown>[]
 ]> => {
   const allAgents: Agent[] = [
+    AdministratorEventLogAgent,
     DeveloperAgent,
     CsvAnalystAgent,
     ResearcherAgent,

@@ -36,5 +36,11 @@
     "prettier": "3.1.0",
     "rimraf": "~5.0.1",
     "turbo": "1.10.16"
+  },
+  "dependencies": {
+    "add": "^2.0.6",
+    "child_process": "^1.0.2",
+    "node-powershell": "^5.0.1",
+    "yarn": "^1.22.22"
   }
 }

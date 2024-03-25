@@ -1,15 +1,14 @@
-import { Agent, AgentConfig, GoalRunArgs } from "../utils";
 import { AgentContext, Chat } from "@/agent-core";
-import { WebSearchFunction } from "../../functions/WebSearch";
+import { EventLogSearchFunction } from "../../functions/EventLogSearch";
 import { PlanWebResearchFunction } from "../../functions/PlanWebResearch";
 import { prompts } from "./prompts";
 import { ReadFileFunction } from "../../functions/ReadFile";
 import { WriteFileFunction } from "../../functions/WriteFile";
 import { ScrapeTextFunction } from "../../functions/ScrapeText";
 import { ReadDirectoryFunction } from "../../functions/ReadDirectory";
+import { Agent, AgentConfig, GoalRunArgs } from "../utils";
 
-
-export class ResearcherAgent extends Agent {
+export class AdministratorEventLogAgent extends Agent {
   private plan: PlanWebResearchFunction;
 
   constructor(context: AgentContext) {
@@ -17,11 +16,8 @@ export class ResearcherAgent extends Agent {
       new AgentConfig(
         () => prompts,
         [
-          new WebSearchFunction(context.llm, context.chat.tokenizer),
+          new EventLogSearchFunction(context.scripts),
           new ScrapeTextFunction(),
-          new ReadFileFunction(context.scripts),
-          new WriteFileFunction(context.scripts),
-          new ReadDirectoryFunction(context.scripts),
         ],
         context.scripts
       ),

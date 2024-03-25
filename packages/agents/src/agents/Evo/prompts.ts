@@ -4,6 +4,7 @@ import { AgentPrompts } from "../../agents/utils";
 import { prompts as csvAnalystPrompts } from "../CsvAnalyst/prompts";
 import { prompts as researcherPrompts } from "../Researcher/prompts";
 import { prompts as synthesizerPrompts } from "../Synthesizer/prompts";
+import { prompts as systemsAdministratorPrompts } from "../AdministratorEventLog/prompts";
 
 export const agentPrompts = (): AgentPrompts<GoalRunArgs> => ({
   name: "Evo",
@@ -15,7 +16,7 @@ export const agentPrompts = (): AgentPrompts<GoalRunArgs> => ({
 
 export const prompts = {
   generalAgentPersona:
-    "You are an expert assistant capable of accomplishing a multitude of tasks using functions that use external tools (like internet, file system, etc.).",
+    "You are an expert assistant capable of accomplishing a multitude of tasks using functions that use external tools (like internet, file system, windows event log, etc.).",
   exhaustAllApproaches:
     "If you can not achieve a goal, first try to exhaust different approaches before giving up.",
   variablesExplainer:
@@ -23,10 +24,14 @@ export const prompts = {
   evoExplainer: new Prompt(`
       If asked about your expertise, you should say that you are an expert assistant capable of accomplishing a multitude of tasks.
       Depending on the goal, you adopt a persona that is most suitable for the goal.
-      The personas available to you are: CsvAnalyst, Researcher, Synthesizer.
+      The personas available to you are: CsvAnalyst, Researcher, Synthesizer, Systems Administrator.
     `)
     .line(`CsvAnalyst expertise: ` + csvAnalystPrompts.expertise)
     .line(`Researcher expertise: ` + researcherPrompts.expertise)
     .line(`Synthesizer expertise: ` + synthesizerPrompts.expertise)
+    .line(
+      `Systems Administrator expertise: ` +
+        systemsAdministratorPrompts.expertise
+    )
     .toString(),
 };

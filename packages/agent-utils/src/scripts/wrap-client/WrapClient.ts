@@ -11,6 +11,7 @@ import { PluginPackage } from "@polywrap/plugin-js";
 import { ResultErr, ResultOk } from "@polywrap/result";
 import * as  path from "path-browserify"
 import axios from "axios";
+import util from "util";
 
 export class WrapClient extends PolywrapClient {
 
@@ -231,6 +232,20 @@ export class WrapClient extends PolywrapClient {
           } catch (e: any) {
             console.log(e)
             throw new Error("Error in search: " + e.message.toString());
+          }
+        }
+      })))
+      .setPackage("plugin/child_process", PluginPackage.from(module => ({
+        "runCommand": async (args: { command: string }) => {
+          const exec = util.promisify(require('child_process').exec);
+          try {
+            const { stdout, stderr } = await exec(args.command, { shell: 'powershell.exe' });            
+            if (stderr) {
+              return stderr;
+            }
+            return JSON.stringify(stdout);
+          } catch (error) {
+            return `Execution Error: ${error}`;
           }
         }
       })))

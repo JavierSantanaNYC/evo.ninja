@@ -1,0 +1,6 @@
+{
+    "name": "powershell.getEventLog",
+    "description": "Get's the latest 10 events from the windows event log",
+    "arguments": "{ path: string }",
+    "code": "./powershell.getEventLog.js"
+  }

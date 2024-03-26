@@ -1,6 +1,6 @@
 {
     "name": "powershell.getEventLog",
-    "description": "Get's the latest 10 events from the windows event log",
-    "arguments": "{ path: string }",
+    "description": "Calls the Get-WinEvent powershell cmdlet to get the event log entries on the local machine.",
+    "arguments": "{ logName: string, filterXPath: string }",
     "code": "./powershell.getEventLog.js"
   }

@@ -6,7 +6,8 @@ import { Scripts } from "@evo-ninja/agent-utils";
 import { AgentOutputType, trimText, ChatMessageBuilder, AgentFunctionResult } from "@/agent-core"
 
 interface EventLogSearchFuncParameters { 
-  path: string;
+  logName: string;
+  filterXPath: string;
 }
 
 export class EventLogSearchFunction extends ScriptFunction<EventLogSearchFuncParameters> {
@@ -19,11 +20,14 @@ export class EventLogSearchFunction extends ScriptFunction<EventLogSearchFuncPar
   parameters: any = {
     type: "object",
     properties: {
-      path: {
+      logName: {
+        type: "string",
+      },
+      filterXPath: {
         type: "string",
       },
     },
-    required: ["path"],
+    required: ["logName", "filterXPath"],
     additionalProperties: false,
   };
 
@@ -39,7 +43,8 @@ export class EventLogSearchFunction extends ScriptFunction<EventLogSearchFuncPar
           type: AgentOutputType.Success,
           title: `[${agent.config.prompts.name}] ${this.name}`,
           content:
-            `${params.path}\n` +
+            `${params.logName}\n` +
+            `${params.filterXPath}\n` +
             `${trimText(result, 200)}`,
         },
       ],

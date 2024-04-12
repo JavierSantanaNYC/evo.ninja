@@ -95,7 +95,7 @@ export class WrapClient extends PolywrapClient {
               error: JSON.stringify(e)
             };
           }
-  
+
           return res;
         },
         "post": async (args: any) => {
@@ -239,7 +239,7 @@ export class WrapClient extends PolywrapClient {
         "runCommand": async (args: { command: string }) => {
           const exec = util.promisify(require('child_process').exec);
           try {
-            const { stdout, stderr } = await exec(args.command, { shell: 'powershell.exe' });            
+            const { stdout, stderr } = await exec(args.command, { shell: 'powershell.exe' });
             if (stderr) {
               return stderr;
             }
@@ -247,12 +247,12 @@ export class WrapClient extends PolywrapClient {
           } catch (error) {
             return `Execution Error: ${error}`;
           }
-        }
-      })))
+        },
+        }))
+      );
 
     if (agentPlugin) {
-      builder
-        .setPackage("plugin/agent", agentPlugin);
+      builder.setPackage("plugin/agent", agentPlugin);
     }
 
     super(builder.build());

@@ -1,0 +1,6 @@
+{
+  "name": "powershell.tracert",
+  "description": "Calls tracert on a given IP address or hostname",
+  "arguments": "{endpoint: string}",
+  "code": "./powershell.tracert.js"
+}

@@ -2,11 +2,13 @@ import { FunctionDefinition, Rag, ArrayRecombiner } from "@/agent-core";
 import { AgentContext } from "@/agent-core";
 import { AgentFunctionBase } from "../../functions/utils";
 import { Agent, GoalRunArgs } from "../utils/Agent";
-import { AdministratorEventLogAgent } from "../AdministratorEventLog";
+import { EventLogAgent } from "../AdministratorEventLog";
+import { SystemsAdministratorAgent } from "../SystemAdministrator";
 import { DeveloperAgent } from "../Developer";
 import { CsvAnalystAgent } from "../CsvAnalyst";
 import { ResearcherAgent } from "../Researcher";
 import { SynthesizerAgent } from "../Synthesizer";
+
 import { InMemoryWorkspace } from "@evo-ninja/agent-utils";
 
 type AgentWithPrompts = {
@@ -29,11 +31,11 @@ export const findBestAgent = async (
   AgentFunctionBase<unknown>[]
 ]> => {
   const allAgents: Agent[] = [
-    AdministratorEventLogAgent,
-    DeveloperAgent,
-    CsvAnalystAgent,
-    ResearcherAgent,
-    SynthesizerAgent,
+    SystemsAdministratorAgent,
+    //DeveloperAgent,
+    //SynthesizerAgent,
+    //ResearcherAgent,
+    //CsvAnalystAgent,
   ].map((agentClass) => new agentClass(context.cloneEmpty()));
 
   const agentsWithPrompts = allAgents.map(agent => {

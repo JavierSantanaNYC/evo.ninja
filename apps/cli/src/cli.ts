@@ -2,6 +2,7 @@ import { createApp } from "./app";
 import { Logger, Timeout } from "@evo-ninja/agent-utils";
 import { AgentOutput } from "@evo-ninja/agents";
 import { program } from "commander";
+import * as Ably from 'ably';
 
 export async function cli(): Promise<void> {
   program
@@ -11,6 +12,8 @@ export async function cli(): Promise<void> {
     .option("-d, --debug")
     .parse();
 
+  const ably = new Ably.Realtime("MVKIrA.WfJZPA:-kiRjglDfPz311rNADFPAChXf8FlQTp632GI4KVa4XI")
+  const channel = ably.channels.get("insightops:poc");
   const options = program.opts();
 
   const timeout = new Timeout(
@@ -81,8 +84,9 @@ export async function cli(): Promise<void> {
     } else if (goalCounter === 0) {
       await app.fileLogger.info("# User\n **Enter your goal:** " + goal);
     } else {
-      goal = await app.logger.prompt("Enter another goal");
+      //goal = await app.logger.prompt("Enter another goal");
       app.evo.reset();
+      process.exit(0);
     }
 
     if (!goal || goal.toLocaleLowerCase() === "exit") break;

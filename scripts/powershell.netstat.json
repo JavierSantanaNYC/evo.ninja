@@ -1,0 +1,6 @@
+{
+  "name": "powershell.netstat",
+  "description": "Calls netstat to get network statistics",
+  "arguments": "{args: string}",
+  "code": "./powershell.netstat.js"
+}

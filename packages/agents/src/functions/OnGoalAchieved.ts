@@ -2,6 +2,7 @@ import { AgentOutputType, ChatMessageBuilder } from "@/agent-core"
 import { ScriptFunction } from "./utils";
 import { Agent } from "../agents/utils";
 
+
 interface OnGoalAchievedFuncParameters { 
   message: string
 };

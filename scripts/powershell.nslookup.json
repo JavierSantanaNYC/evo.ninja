@@ -1,0 +1,6 @@
+{
+  "name": "powershell.nslookup",
+  "description": "Calls nslookup on a given endpoint and returns the result",
+  "arguments": "{endpoint: string}",
+  "code": "./powershell.nslookup.js"
+}

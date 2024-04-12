@@ -1,0 +1,6 @@
+{
+  "name": "powershell.getProcess",
+  "description": "Calls the Get-Process cmdlet to retrieve information about the processes running on a local computer.",
+  "arguments": "{sortMetric: string}",
+  "code": "./powershell.getProcess.js"
+}

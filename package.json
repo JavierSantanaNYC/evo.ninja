@@ -38,9 +38,11 @@
     "turbo": "1.10.16"
   },
   "dependencies": {
+    "ably": "^2.0.2",
     "add": "^2.0.6",
     "child_process": "^1.0.2",
     "node-powershell": "^5.0.1",
+    "sqlite3": "^5.1.7",
     "yarn": "^1.22.22"
   }
 }

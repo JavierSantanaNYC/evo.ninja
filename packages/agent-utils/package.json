@@ -29,6 +29,7 @@
     "json5": "^2.2.3",
     "openai": "4.16.1",
     "path-browserify": "1.0.1",
+    "sqlite3": "^5.1.7",
     "string-similarity": "^4.0.4",
     "uuid": "9.0.1"
   },

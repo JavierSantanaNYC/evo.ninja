@@ -41,12 +41,12 @@ export class Evo extends Agent<GoalRunArgs> {
     );
   }
 
-  public reset() {
+  public reset(goal: string = "") {
     this.previousPrediction = undefined;
     this.loopCounter = 0;
     this.previousAgent = undefined;
     this.initializedAgents = new Set();
-    this.goal = "";
+    this.goal = goal;
   }
 
   public override async init(): Promise<void> {

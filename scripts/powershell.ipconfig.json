@@ -1,0 +1,6 @@
+{
+  "name": "powershell.ipconfig",
+  "description": "Calls ipconfig and returns the output",
+  "arguments": "",
+  "code": "./powershell.ipconfig.js"
+}

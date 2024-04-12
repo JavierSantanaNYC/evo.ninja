@@ -1,0 +1,6 @@
+{
+  "name": "powershell.ping",
+  "description": "Calls ping from powershell and returns the result",
+  "arguments": "{endpoint: string}",
+  "code": "./powershell.ping.js"
+}

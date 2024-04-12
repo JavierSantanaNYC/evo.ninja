@@ -1,0 +1,6 @@
+{
+    "name": "powershell.wmiQuery",
+    "description": "Calls the Get-WmiObject commandlet to provide information about system configuration.",
+    "arguments": "{className: string}",
+    "code": "./powershell.wmiQuery.js"
+  }

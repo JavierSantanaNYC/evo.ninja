@@ -1,0 +1,6 @@
+{
+  "name": "powershell.PerformanceQuery",
+  "description": "Calls the typeperf command to provide information about system performance data.",
+  "arguments": "{counterName: string}",
+  "code": "./powershell.performanceQuery.js"
+}

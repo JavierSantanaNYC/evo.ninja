@@ -2,13 +2,10 @@ import { AgentContext, Chat } from "@/agent-core";
 import { EventLogSearchFunction } from "../../functions/EventLogSearch";
 import { PlanWebResearchFunction } from "../../functions/PlanWebResearch";
 import { prompts } from "./prompts";
-import { ReadFileFunction } from "../../functions/ReadFile";
-import { WriteFileFunction } from "../../functions/WriteFile";
 import { ScrapeTextFunction } from "../../functions/ScrapeText";
-import { ReadDirectoryFunction } from "../../functions/ReadDirectory";
 import { Agent, AgentConfig, GoalRunArgs } from "../utils";
 
-export class AdministratorEventLogAgent extends Agent {
+export class EventLogAgent extends Agent {
   private plan: PlanWebResearchFunction;
 
   constructor(context: AgentContext) {

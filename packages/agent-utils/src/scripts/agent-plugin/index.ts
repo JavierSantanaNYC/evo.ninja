@@ -7,11 +7,18 @@ import {
   manifest
 } from "./types";
 import { Logger } from "../../";
+import { publishToAbly } from "./ably/publish";
 
 import { PluginFactory, PluginPackage } from "@polywrap/plugin-js";
 
 export interface AgentPluginConfig {
   logger: Logger;
+}
+
+interface Message {
+  channel: string;
+  messages: Array<string>;
+  goalCompleted: boolean;
 }
 
 export class AgentPlugin extends Module<AgentPluginConfig> {
@@ -33,6 +40,19 @@ export class AgentPlugin extends Module<AgentPluginConfig> {
   }
 
   public async onGoalAchieved(args: Args_onGoalAchieved): Promise<boolean> {
+    const msg: Message = {
+      channel: "poc",
+      messages: [args.message],
+      goalCompleted: true,
+    };
+    await publishToAbly("poc", msg)
+    .then(() => {
+        console.log("Published message");
+    })
+    .catch((err) => {
+        // Handle errors specifically here if necessary.
+        throw err; // Re-throw the error to reject the promise returned by publishToAbly.
+    });
     await this._logger.success(args.message);
     return true;
   }

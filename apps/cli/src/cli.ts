@@ -3,6 +3,7 @@ import { Logger, Timeout } from "@evo-ninja/agent-utils";
 import { AgentOutput } from "@evo-ninja/agents";
 import { program } from "commander";
 import * as Ably from 'ably';
+import {subscribeToInsightOps} from './ably/subscribe';
 
 export async function cli(): Promise<void> {
   program

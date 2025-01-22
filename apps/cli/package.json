@@ -6,7 +6,8 @@
     "type": "git",
     "url": "https://github.com/polywrap/evo.ninja.git"
   },
-  "main": "build/index.js",
+  "main": "build/cli.js",
+  "bin": "build/cli.js",
   "scripts": {
     "start": "ts-node src/cli.ts",
     "start:api": "ts-node src/api.ts",

@@ -1,0 +1,5 @@
+{
+    "tenantId" : "a1776c7b-8a14-46da-b431-2758b871f64f",
+    "systemId" : "14b0827a-7bd7-4506-96d8-d9225dde3ce5",
+    "channels" : ["alerts", "updates", "responses"]
+}

@@ -5,7 +5,11 @@ if (!(Test-Path $installDir)) {
 }
 
 if (!(Test-Path "$installDir\nvm")) {
-    Copy-Item $PSScriptRoot\nvm $installDir\nvm -Recurse
+    Copy-Item $PSScriptRoot\nvm $installDir\nvm -Recurse -Container
+}
+
+if (!(Test-Path "$installDir\build")) {
+    Copy-Item $PSScriptRoot\buildDir $installDir\build -Recurse -Container
 }
 
 Set-Location $installDir\nvm
